@@ -1,0 +1,27 @@
+{
+    "mesh_filename": "EITmesh.fem",
+    "optimize_node_num": false,
+    "shuffle_element": false,
+    "electrode_centers": [
+        [47,0],[47,23.5],[47,47],
+        [23.5,47],[0,47],[-23.5,47],[-47,47],
+        [-47,23.5],[-47,0],[-47,-23.5],[-47,-47],
+        [-23.5,-47],[0,-47],[23.5,-47],[47,-47],
+        [47,-23.5]
+    ],
+    "signal_frequency": 20000,
+    "resistance": 200000,
+    "electrode_radius": 3,
+    "reconstruction_mode": "n",
+    "capacitance_change_for_JAC": 1e-3,
+    "overall_origin_capacitance": 0,
+    "detection_bound": 40,
+    "is_first_JAC_calculation": true,
+    "folder_name": "Mesh_50_50",
+    "calc_from": 0,
+    "calc_end": 16,
+    "regularization_coeff": 295,
+    "device": "gpu",
+    "unit": "mm",
+    "mesh_unit": "mm"
+}

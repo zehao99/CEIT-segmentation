@@ -1,0 +1,11 @@
+learning_data/
+*.csv
+*.npy
+*.pkl
+__pycache__/
+venv/
+.vscode/
+.idea/
+MESH_TEST/
+MESH_NEW/
+data/
