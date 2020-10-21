@@ -34,9 +34,9 @@ class EITSegmentationDataset(Dataset):
         if torch.is_tensor(idx):
             idx = idx.tolist()
         capacitance_data = self.capacitance_data_frame.iloc[idx, :]
-        capacitance_data = self.mat_converter.multi_row_transfer(capacitance_data)
+        capacitance_data = self.mat_converter.single_row_transfer(capacitance_data)
         segmentation_mask = self.segmentation_data_frame.iloc[idx, :]
-        segmentation_mask = self.mat_converter.multi_row_transfer(segmentation_mask)
+        segmentation_mask = self.mat_converter.single_row_transfer(segmentation_mask)
         sample = {"capacitance_data": capacitance_data, "segmentation_mask": segmentation_mask}
 
         if self.transform:
@@ -57,7 +57,7 @@ class ToTensor(object):
                 "segmentation_mask": torch.from_numpy(segmentation_mask).double()}
 
 
-def parse_data(root_dir='learning_data/'):
+def parse_data(root_dir='data/'):
     eit_dataset = EITSegmentationDataset(root_dir=root_dir, transform=transforms.Compose([ToTensor()]))
     return eit_dataset
 

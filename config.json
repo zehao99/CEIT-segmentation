@@ -23,5 +23,12 @@
     "regularization_coeff": 295,
     "device": "gpu",
     "unit": "mm",
-    "mesh_unit": "mm"
+    "mesh_unit": "mm",
+    "PATH": "./EIT_model.pth",
+    "epoch": 100,
+    "batch_size": 100,
+    "num_workers": 4,
+    "learning_rate": 0.001,
+    "train_dir": "data/",
+    "test_dir": "test_data/"
 }

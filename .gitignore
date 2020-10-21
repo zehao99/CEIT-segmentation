@@ -9,3 +9,4 @@ venv/
 MESH_TEST/
 MESH_NEW/
 data/
+*.pth

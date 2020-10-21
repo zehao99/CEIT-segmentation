@@ -25,12 +25,17 @@ class CapaToMatrix:
         return sum_mat / count_mat
 
     def multi_row_transfer(self, data):
-        out = np.zeros((len(data), self.DIMENSION, self.DIMENSION))
+        out = np.zeros((len(data), self.DIMENSION, self.DIMENSION, 1))
         for i, row in enumerate(data):
             mat = self.transfer_data_to_matrix(row)
-            out[i] = mat
+            out[i] = mat[np.newaxis, :, :]
         return out
 
+    def single_row_transfer(self, data):
+        out = np.zeros((self.DIMENSION, self.DIMENSION, 1))
+        mat = self.transfer_data_to_matrix(data)
+        out = mat[np.newaxis, :, :]
+        return out
 
     def get_coordinate(self, x, y, pixel_size):
         row = int((x + self.DIMENSION * pixel_size / 2) / pixel_size)
