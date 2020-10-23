@@ -10,3 +10,5 @@ MESH_TEST/
 MESH_NEW/
 data/
 *.pth
+training_log/
+t.py

@@ -36,7 +36,7 @@ class EITSegmentationDataset(Dataset):
         capacitance_data = self.capacitance_data_frame.iloc[idx, :]
         capacitance_data = self.mat_converter.single_row_transfer(capacitance_data)
         segmentation_mask = self.segmentation_data_frame.iloc[idx, :]
-        segmentation_mask = self.mat_converter.single_row_transfer(segmentation_mask)
+        segmentation_mask = self.mat_converter.single_mask_transfer(segmentation_mask)
         sample = {"capacitance_data": capacitance_data, "segmentation_mask": segmentation_mask}
 
         if self.transform:

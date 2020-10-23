@@ -30,5 +30,6 @@
     "num_workers": 4,
     "learning_rate": 0.001,
     "train_dir": "data/",
-    "test_dir": "test_data/"
+    "test_dir": "test_data/",
+    "log_dir": "training_log/"
 }

@@ -41,3 +41,8 @@ class CapaToMatrix:
         row = int((x + self.DIMENSION * pixel_size / 2) / pixel_size)
         col = int((y + self.DIMENSION * pixel_size / 2) / pixel_size)
         return row, col
+
+    def single_mask_transfer(self, data):
+        mat = self.transfer_data_to_matrix(data)
+        out = mat[np.newaxis, :, :] > 1e-9
+        return out

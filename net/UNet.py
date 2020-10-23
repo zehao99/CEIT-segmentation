@@ -66,6 +66,7 @@ class Net(nn.Module):
         self.Up_conv2 = ConvBlock(ch_in=layer2_ch, ch_out=layer1_ch)
 
         self.Conv_1x1 = nn.Conv2d(layer1_ch, output_ch, kernel_size=1, stride=1, padding=0)
+        self.softmax = nn.Softmax(dim=1)
 
     def forward(self, x):
         # encoding

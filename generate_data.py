@@ -31,7 +31,7 @@ if __name__ == "__main__":
     """Generate Random change"""
     for i in progressbar.progressbar(range(10000)):
         sample_num = int(np.floor(np.random.rand() * 3) + 1)
-        r = np.random.rand(sample_num) * 14 * 0.002 + 0.002
+        r = np.random.rand(sample_num) * 9 * 0.002 + 0.002
         obj_x = np.random.rand(sample_num) * (0.050 - 2 * r) - (0.025 - r)
         obj_y = np.random.rand(sample_num) * (0.050 - 2 * r) - (0.025 - r)
         val = np.power(10, np.random.rand(sample_num) * 2.3) * 5e-9
