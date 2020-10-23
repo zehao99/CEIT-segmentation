@@ -73,9 +73,11 @@ if __name__ == '__main__':
     net.double()
     # start training
     item_num = 0
+    max_F1_record = 0
     for epoch in range(epoch_num):
         print("Training epoch %d" % epoch)
         running_loss = 0.0
+        sum_F1 = 0
         item_num = 0
         for i, data in enumerate(trainloader, 0):
             inputs, masks = data["capacitance_data"].to(device), data["segmentation_mask"].to(device)
@@ -95,6 +97,7 @@ if __name__ == '__main__':
             running_loss += loss.item()
             accuracy = evalutaion.get_accuracy(out, masks)
             F1_score = evalutaion.get_F1(out, masks)
+            sum_F1 += F1_score
 
             test_out = net(test_inputs)
             img_1 = matplot_img(test_out, test_mask)
@@ -107,8 +110,14 @@ if __name__ == '__main__':
             writer.add_scalar('F1 score on trainset(0.5 threshold)', F1_score, epoch * len(trainloader) + i)
             # out_label = labels.cpu()
         # print(item_num)
+        if sum_F1 / item_num >= max_F1_record:
+            torch.save(net.state_dict(), PATH)
+            max_F1_record = sum_F1 / item_num
+        if epoch in [20, 40, 80, 160, 320]:
+            learning_rate = 0.75 * learning_rate
+
         print('epoch %d,  loss: %.10f' % (epoch + 1, running_loss / item_num))
 
     print('Finished training.')
     # save model
-    torch.save(net.state_dict(), PATH)
+    # torch.save(net.state_dict(), PATH)
