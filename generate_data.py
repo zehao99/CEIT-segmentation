@@ -18,8 +18,8 @@ if __name__ == "__main__":
     mesh_obj, electrode_num, electrode_centers, radius = read_mesh.return_mesh()
 
     """Open Data File"""
-    data_file = open("./data/generated_data.csv", "a", newline='')
-    segmentation_file = open("./data/segmentation_mask.csv", "a", newline='')
+    data_file = open("./data/generated_data_train.csv", "a", newline='')
+    segmentation_file = open("./data/segmentation_mask_train.csv", "a", newline='')
     data_writer = csv.writer(data_file, delimiter=',')
     segmentation_writer = csv.writer(segmentation_file, delimiter=',')
 
@@ -30,8 +30,8 @@ if __name__ == "__main__":
 
     """Generate Random change"""
     for i in progressbar.progressbar(range(10000)):
-        sample_num = int(np.floor(np.random.rand() * 3) + 1)
-        r = np.random.rand(sample_num) * 9 * 0.002 + 0.002
+        sample_num = int(np.floor(np.random.rand() * 2) + 1)
+        r = np.random.rand(sample_num) * 3 * 0.002 + 0.002
         obj_x = np.random.rand(sample_num) * (0.050 - 2 * r) - (0.025 - r)
         obj_y = np.random.rand(sample_num) * (0.050 - 2 * r) - (0.025 - r)
         val = np.power(10, np.random.rand(sample_num) * 2.3) * 5e-9

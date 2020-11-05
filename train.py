@@ -111,10 +111,12 @@ if __name__ == '__main__':
             # out_label = labels.cpu()
         # print(item_num)
         if sum_F1 / item_num >= max_F1_record:
+            print('Model saved.')
             torch.save(net.state_dict(), PATH)
             max_F1_record = sum_F1 / item_num
-        if epoch in [20, 40, 80, 160, 320]:
-            learning_rate = 0.75 * learning_rate
+        if epoch in [20, 80, 160, 320, 500]:
+            learning_rate = 0.6 * learning_rate
+            print('learning rate dropped to %.10f' % learning_rate)
 
         print('epoch %d,  loss: %.10f' % (epoch + 1, running_loss / item_num))
 

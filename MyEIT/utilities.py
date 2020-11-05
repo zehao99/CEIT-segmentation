@@ -99,6 +99,7 @@ def read_csv_one_line_from_file(filename, path_name=".", idx=0):
     Args:
         filename: filename of the destination with suffix example: "aaa.csv"
         path_name: path name of the destination example: "./MESH"
+        idx: line of the data, default to 0
     Returns:
         data: data in the file
     """
